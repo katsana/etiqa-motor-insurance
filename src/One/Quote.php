@@ -15,9 +15,6 @@ class Quote extends Request
      */
     public function submit(array $payload): Response
     {
-        $payload['agent_code'] = $this->client->getAgentCode();
-        $payload['operator_code'] = $this->client->getOperatorCode();
-
         return $this->send('POST', 'motor/quote', $this->getApiHeaders(), $this->mergeApiBody($payload));
     }
 }

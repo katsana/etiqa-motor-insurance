@@ -31,20 +31,6 @@ class Client extends BaseClient
     protected $accessToken;
 
     /**
-     * Agent code.
-     *
-     * @var string|null
-     */
-    protected $agentCode;
-
-    /**
-     * Operator code.
-     *
-     * @var string|null
-     */
-    protected $operatorCode;
-
-    /**
      * The API endpoint.
      *
      * @var string
@@ -73,16 +59,12 @@ class Client extends BaseClient
      * @param \Http\Client\Common\HttpMethodsClient  $http
      * @param string  $clientId
      * @param string  $clientSecret
-     * @param string  $agentCode
-     * @param string  $operatorCode
      */
-    public function __construct(HttpClient $http, string $clientId, string $clientSecret, string $agentCode, string $operatorCode)
+    public function __construct(HttpClient $http, string $clientId, string $clientSecret)
     {
         $this->http = $http;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->agentCode = $agentCode;
-        $this->operatorCode = $operatorCode;
     }
 
     /**
@@ -103,54 +85,6 @@ class Client extends BaseClient
     public function getClientSecret(): string
     {
         return $this->clientSecret;
-    }
-
-    /**
-     * Get agent code.
-     *
-     * @return string
-     */
-    public function getAgentCode(): string
-    {
-        return $this->agentCode;
-    }
-
-    /**
-     * Set agent code.
-     *
-     * @param  string  $agentCode
-     *
-     * @return $this
-     */
-    public function setAgentCode(string $agentCode): self
-    {
-        $this->agentCode = $agentCode;
-
-        return $this;
-    }
-
-    /**
-     * Get operator code.
-     *
-     * @return string
-     */
-    public function getOperatorCode(): string
-    {
-        return $this->operatorCode;
-    }
-
-    /**
-     * Set operator code.
-     *
-     * @param  string  $operatorCode
-     *
-     * @return $this
-     */
-    public function setOperatorCode(string $operatorCode): self
-    {
-        $this->operatorCode = $operatorCode;
-
-        return $this;
     }
 
     /**
