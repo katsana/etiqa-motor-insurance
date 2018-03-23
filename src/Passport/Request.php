@@ -1,6 +1,6 @@
 <?php
 
-namespace Etiqa\MotorInsurance\One;
+namespace Etiqa\MotorInsurance\Passport;
 
 use Laravie\Codex\Endpoint;
 use Etiqa\MotorInsurance\Request as BaseRequest;
@@ -23,8 +23,8 @@ abstract class Request extends BaseRequest
      */
     protected function getApiEndpoint($path = [])
     {
-        $host = $this->client->getApiEndpoint();
+        $host = $this->client->getPassportEndpoint();
 
-        return new Endpoint("{$host}/api/{$this->version}/my/insurance", $path);
+        return new Endpoint("{$host}/api/{$this->version}/my/oauth", $path);
     }
 }

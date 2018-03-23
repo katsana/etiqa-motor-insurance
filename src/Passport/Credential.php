@@ -2,10 +2,7 @@
 
 namespace Etiqa\MotorInsurance\Passport;
 
-use Laravie\Codex\Endpoint;
-use Etiqa\MotorInsurance\Request as BaseRequest;
-
-class Credential extends BaseRequest
+class Credential extends Request
 {
     /**
      * Create access token.
@@ -15,18 +12,6 @@ class Credential extends BaseRequest
     public function createAccessToken()
     {
         return $this->send('POST', 'token', $this->getApiHeaders(), $this->getApiBody());
-    }
-
-    /**
-     * Get API Endpoint.
-     *
-     * @param string|array $path
-     *
-     * @return \Laravie\Codex\Endpoint
-     */
-    protected function getApiEndpoint($path = [])
-    {
-        return new Endpoint($this->client->getPassportEndpoint(), $path);
     }
 
     /**
