@@ -31,13 +31,6 @@ class Client extends BaseClient
     protected $accessToken;
 
     /**
-     * The API endpoint.
-     *
-     * @var string
-     */
-    protected $apiEndpoint;
-
-    /**
      * The Passport (OAuth2) endpoint.
      *
      * @var string
@@ -150,7 +143,7 @@ class Client extends BaseClient
      *
      * @return $this
      */
-    public function useCustomPassportEndpoint($endpoint): self
+    public function useCustomPassportEndpoint(string $endpoint): self
     {
         $this->passportEndpoint = $endpoint;
 

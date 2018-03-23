@@ -31,9 +31,9 @@ class RequestHasFailedException extends HttpException
     /**
      * Get response error code.
      *
-     * @return string|null
+     * @return string
      */
-    public function getResponseErrorCode(): ?string
+    public function getResponseErrorCode(): string
     {
         return $this->responseErrorCode;
     }
