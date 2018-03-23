@@ -21,13 +21,13 @@
     },
     "require": {
         "php": ">=7.1",
-        "laravie/codex": "~1.5",
+        "laravie/codex": "^1.5",
         "php-http/multipart-stream-builder": "^1.0"
     },
     "require-dev": {
-        "mockery/mockery": "~1.0",
+        "mockery/mockery": "^1.0",
         "php-http/curl-client": "^1.7",
-        "phpunit/phpunit": "~7.0"
+        "phpunit/phpunit": "^7.0"
     },
     "extra": {
         "branch-alias": {
