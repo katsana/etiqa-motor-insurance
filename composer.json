@@ -21,8 +21,7 @@
     },
     "require": {
         "php": ">=7.1",
-        "laravie/codex": "^1.5",
-        "php-http/multipart-stream-builder": "^1.0"
+        "laravie/codex": "^1.5"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
