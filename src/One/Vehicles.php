@@ -19,7 +19,7 @@ class Vehicles extends Request
     /**
      * Get all whitelist vehicles by make.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Laravie\Codex\Contracts\Response
      */
@@ -31,9 +31,9 @@ class Vehicles extends Request
     /**
      * Get all whitelist vehicles by make, model and year.
      *
-     * @param  string  $make
-     * @param  string  $model
-     * @param  int  $year
+     * @param string $make
+     * @param string $model
+     * @param int    $year
      *
      * @return \Laravie\Codex\Contracts\Response
      */

@@ -2,10 +2,10 @@
 
 namespace Etiqa\MotorInsurance\TestCase\One;
 
-use Mockery as m;
-use PHPUnit\Framework\TestCase;
 use Etiqa\MotorInsurance\Client;
 use Laravie\Codex\Testing\FakeRequest;
+use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
 class QuoteTest extends TestCase
 {

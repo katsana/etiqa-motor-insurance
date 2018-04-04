@@ -9,7 +9,7 @@ class Policy extends Request
     /**
      * Send quotation request.
      *
-     * @param  array  $payload
+     * @param array $payload
      *
      * @return \Laravie\Codex\Contracts\Response
      */

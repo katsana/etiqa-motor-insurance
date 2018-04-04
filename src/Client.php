@@ -2,10 +2,10 @@
 
 namespace Etiqa\MotorInsurance;
 
-use Laravie\Codex\Client as BaseClient;
-use Psr\Http\Message\ResponseInterface;
 use Http\Client\Common\HttpMethodsClient as HttpClient;
+use Laravie\Codex\Client as BaseClient;
 use Laravie\Codex\Contracts\Response as ResponseContract;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
@@ -49,9 +49,9 @@ class Client extends BaseClient
     /**
      * Construct a new Client.
      *
-     * @param \Http\Client\Common\HttpMethodsClient  $http
-     * @param string  $clientId
-     * @param string  $clientSecret
+     * @param \Http\Client\Common\HttpMethodsClient $http
+     * @param string                                $clientId
+     * @param string                                $clientSecret
      */
     public function __construct(HttpClient $http, string $clientId, string $clientSecret)
     {
@@ -117,7 +117,7 @@ class Client extends BaseClient
     /**
      * Resolve the responder class.
      *
-     * @param  \Psr\Http\Message\ResponseInterface  $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return \Laravie\Codex\Contracts\Response
      */
@@ -139,7 +139,7 @@ class Client extends BaseClient
     /**
      * Use custom Passport Endpoint.
      *
-     * @param  string  $endpoint
+     * @param string $endpoint
      *
      * @return $this
      */
