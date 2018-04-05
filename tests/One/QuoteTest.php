@@ -3,7 +3,7 @@
 namespace Etiqa\MotorInsurance\TestCase\One;
 
 use Etiqa\MotorInsurance\Client;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -38,7 +38,7 @@ class QuoteTest extends TestCase
             'operator_code' => 'operator',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');
@@ -77,7 +77,7 @@ class QuoteTest extends TestCase
             'operator_code' => 'operator',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');

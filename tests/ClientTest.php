@@ -3,7 +3,7 @@
 namespace Etiqa\MotorInsurance\TestCase;
 
 use Etiqa\MotorInsurance\Client;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_has_proper_signature()
     {
-        $faker = FakeRequest::create();
+        $faker = Faker::create();
 
         $client = new Client($faker->http(), 'id', 'secret');
 
@@ -33,7 +33,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_can_use_custom_passport_endpoint()
     {
-        $faker = FakeRequest::create();
+        $faker = Faker::create();
 
         $client = new Client($faker->http(), 'id', 'secret');
 
@@ -45,7 +45,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_can_set_access_token()
     {
-        $faker = FakeRequest::create();
+        $faker = Faker::create();
 
         $client = new Client($faker->http(), 'id', 'secret');
 

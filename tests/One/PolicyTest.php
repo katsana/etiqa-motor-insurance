@@ -3,7 +3,7 @@
 namespace Etiqa\MotorInsurance\TestCase\One;
 
 use Etiqa\MotorInsurance\Client;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +39,7 @@ class PolicyTest extends TestCase
             ],
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/policy')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');

@@ -4,7 +4,7 @@ namespace Etiqa\MotorInsurance\TestCase\Passport;
 
 use Etiqa\MotorInsurance\Client;
 use Etiqa\MotorInsurance\Passport\Credential;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -32,7 +32,7 @@ class CredentialTest extends TestCase
             'client_secret' => 'secret',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('https://api.etiqa.com.my/passport/api/v1.0/my/oauth/token')
                     ->shouldResponseWith(200, '{"status":"OK","data":{"access_token":"AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"}}');

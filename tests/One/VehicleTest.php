@@ -3,7 +3,7 @@
 namespace Etiqa\MotorInsurance\TestCase\One;
 
 use Etiqa\MotorInsurance\Client;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,7 @@ class VehicleTest extends TestCase
             'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles')
                     ->shouldResponseWith(200, '{"status":"OK","data":[]}');
@@ -48,7 +48,7 @@ class VehicleTest extends TestCase
             'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles/ABC')
                     ->shouldResponseWith(200, '{"status":"OK","data":[]}');
@@ -71,7 +71,7 @@ class VehicleTest extends TestCase
             'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
         ];
 
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles/ABC/123/2011')
                     ->shouldResponseWith(200, '{"status":"OK","data":[]}');

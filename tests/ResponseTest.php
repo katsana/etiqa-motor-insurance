@@ -3,7 +3,7 @@
 namespace Etiqa\MotorInsurance\TestCase;
 
 use Etiqa\MotorInsurance\Response;
-use Laravie\Codex\Testing\FakeRequest;
+use Laravie\Codex\Testing\Faker;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ class ResponseTest extends TestCase
     /** @test */
     public function it_can_be_validated()
     {
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->shouldResponseWith(200, '{"status":"OK"}');
 
         $response = (new Response($faker->message()))->validate();
@@ -35,7 +35,7 @@ class ResponseTest extends TestCase
      */
     public function it_can_be_validate_unauthorized()
     {
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->shouldResponseWith(401)
                     ->expectReasonPhraseIs('Not authorized.');
 
@@ -49,7 +49,7 @@ class ResponseTest extends TestCase
      */
     public function it_can_be_validate_server_errors()
     {
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->shouldResponseWith(500, '{"status":"ERROR","message":"Server not available!"}');
 
         $response = (new Response($faker->message()))->validate();
@@ -62,7 +62,7 @@ class ResponseTest extends TestCase
      */
     public function it_can_be_validate_generic_errors()
     {
-        $faker = FakeRequest::create()
+        $faker = Faker::create()
                     ->shouldResponseWith(418)
                     ->expectReasonPhraseIs("I'm a teapot");
 
