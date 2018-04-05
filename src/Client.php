@@ -107,7 +107,7 @@ class Client extends BaseClient
      *
      * @return $this
      */
-    public function setAccessToken(?string $accessToken): self
+    public function setAccessToken(?string $accessToken)
     {
         $this->accessToken = $accessToken;
 
@@ -143,7 +143,7 @@ class Client extends BaseClient
      *
      * @return $this
      */
-    public function useCustomPassportEndpoint(string $endpoint): self
+    public function useCustomPassportEndpoint(string $endpoint)
     {
         $this->passportEndpoint = $endpoint;
 

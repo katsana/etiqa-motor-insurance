@@ -12,7 +12,7 @@ class Response extends BaseResponse
      *
      * @return $this
      */
-    public function validate(): self
+    public function validate(): BaseResponse
     {
         $payload = $this->toArray();
 
