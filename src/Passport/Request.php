@@ -4,6 +4,7 @@ namespace Etiqa\MotorInsurance\Passport;
 
 use Etiqa\MotorInsurance\Request as BaseRequest;
 use Laravie\Codex\Endpoint;
+use Laravie\Codex\Contracts\Endpoint as EndpointContract;
 
 abstract class Request extends BaseRequest
 {
@@ -19,9 +20,9 @@ abstract class Request extends BaseRequest
      *
      * @param string|array $path
      *
-     * @return \Laravie\Codex\Endpoint
+     * @return \Laravie\Codex\Contracts\Endpoint
      */
-    protected function getApiEndpoint($path = [])
+    protected function getApiEndpoint($path = []): EndpointContract
     {
         $host = $this->client->getPassportEndpoint();
 

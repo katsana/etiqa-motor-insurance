@@ -2,6 +2,8 @@
 
 namespace Etiqa\MotorInsurance\Passport;
 
+use Laravie\Codex\Contracts\Response;
+
 class Credential extends Request
 {
     /**
@@ -9,7 +11,7 @@ class Credential extends Request
      *
      * @return \Laravie\Codex\Contracts\Response
      */
-    public function createAccessToken()
+    public function createAccessToken(): Response
     {
         return $this->send('POST', 'token', $this->getApiHeaders(), $this->getApiBody());
     }
@@ -19,7 +21,7 @@ class Credential extends Request
      *
      * @return array
      */
-    protected function getApiBody()
+    protected function getApiBody(): array
     {
         return [
             'scope' => '/motor',
