@@ -3,8 +3,8 @@
 namespace Etiqa\MotorInsurance\One;
 
 use Etiqa\MotorInsurance\Request as BaseRequest;
-use Laravie\Codex\Endpoint;
 use Laravie\Codex\Contracts\Endpoint as EndpointContract;
+use Laravie\Codex\Endpoint;
 
 abstract class Request extends BaseRequest
 {
