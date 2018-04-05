@@ -17,16 +17,12 @@ class PolicyTest extends TestCase
         m::close();
     }
 
-    /**
-     * @test
-     * @expectedException \Etiqa\MotorInsurance\Exceptions\RequestHasFailedException
-     * @expectedExceptionMessage Driver record incomplete. Please provide details
-     */
-    public function it_can_throws_exception_when_status_is_errors()
+    /** @test */
+    public function it_can_submit_policy()
     {
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer abc',
+            'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
         ];
 
         $payload = [
@@ -46,11 +42,14 @@ class PolicyTest extends TestCase
         $faker = FakeRequest::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/policy')
-                    ->shouldResponseWith(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');
+                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
 
-        $client = new Client($faker->http(), 'id', 'secret');
-        $client->setAccessToken('abc');
+        $client = new Client($faker->http(), 'homestead', 'secret');
+        $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
 
-        $client->uses('Policy')->submit($payload);
+        $response = $client->uses('Policy')->submit($payload);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('OK', $response->toArray()['status']);
     }
 }

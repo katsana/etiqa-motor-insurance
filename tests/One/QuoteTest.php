@@ -17,6 +17,41 @@ class QuoteTest extends TestCase
         m::close();
     }
 
+    /** @test */
+    public function it_can_submit_quotation()
+    {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
+        ];
+
+        $payload = [
+            'coverage_type' => 'MT',
+            'id_type' => '1',
+            'id_value' => '820101015510',
+            'vehicle_postcode' => '50000',
+            'vehicle_reg_no' => 'ABC123',
+            'drivers' => [
+                ['email' => 'demo.etiqa@gmail.com'],
+            ],
+            'agent_code' => 'agent',
+            'operator_code' => 'operator',
+        ];
+
+        $faker = FakeRequest::create()
+                    ->call('POST', $headers, json_encode($payload))
+                    ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
+                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
+
+        $client = new Client($faker->http(), 'homestead', 'secret');
+        $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
+
+        $response = $client->uses('Quote')->submit($payload);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('OK', $response->toArray()['status']);
+    }
+
     /**
      * @test
      * @expectedException \Etiqa\MotorInsurance\Exceptions\RequestHasFailedException
@@ -26,7 +61,7 @@ class QuoteTest extends TestCase
     {
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer abc',
+            'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
         ];
 
         $payload = [
@@ -47,8 +82,8 @@ class QuoteTest extends TestCase
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');
 
-        $client = new Client($faker->http(), 'id', 'secret');
-        $client->setAccessToken('abc');
+        $client = new Client($faker->http(), 'homestead', 'secret');
+        $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
 
         $client->uses('Quote')->submit($payload);
     }

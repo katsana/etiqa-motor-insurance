@@ -37,9 +37,9 @@ class ClientTest extends TestCase
 
         $client = new Client($faker->http(), 'id', 'secret');
 
-        $client->useCustomPassportEndpoint('https://api.etiqa.com.my/oauth');
+        $client->useCustomPassportEndpoint('https://api.etiqa.com.my/passport');
 
-        $this->assertSame('https://api.etiqa.com.my/oauth', $client->getPassportEndpoint());
+        $this->assertSame('https://api.etiqa.com.my/passport', $client->getPassportEndpoint());
     }
 
     /** @test */
