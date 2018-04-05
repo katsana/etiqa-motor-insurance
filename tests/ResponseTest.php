@@ -36,12 +36,10 @@ class ResponseTest extends TestCase
     public function it_can_be_validate_unauthorized()
     {
         $faker = FakeRequest::create()
-                    ->shouldResponseWith(401, '{"status":"ERROR"}');
+                    ->shouldResponseWith(401)
+                    ->expectReasonPhraseIs('Not authorized.');
 
-        $message = $faker->message();
-        $message->shouldReceive('getReasonPhrase')->andReturn('Not authorized.');
-
-        $response = (new Response($message))->validate();
+        (new Response($faker->message()))->validate();
     }
 
     /**
@@ -65,11 +63,9 @@ class ResponseTest extends TestCase
     public function it_can_be_validate_generic_errors()
     {
         $faker = FakeRequest::create()
-                    ->shouldResponseWith(418, '{"status":"ERROR"}');
+                    ->shouldResponseWith(418)
+                    ->expectReasonPhraseIs("I'm a teapot");
 
-        $message = $faker->message();
-        $message->shouldReceive('getReasonPhrase')->andReturn("I'm a teapot");
-
-        $response = (new Response($message))->validate();
+        (new Response($faker->message()))->validate();
     }
 }
