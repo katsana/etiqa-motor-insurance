@@ -15,6 +15,6 @@ class Policy extends Request
      */
     public function submit(array $payload): Response
     {
-        return $this->send('POST', 'motor/policy', $this->getApiHeaders(), $this->mergeApiBody($payload));
+        return $this->sendJson('POST', 'motor/policy', $this->getApiHeaders(), $this->mergeApiBody($payload));
     }
 }

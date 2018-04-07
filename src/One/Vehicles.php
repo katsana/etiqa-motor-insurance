@@ -13,7 +13,7 @@ class Vehicles extends Request
      */
     public function all(): Response
     {
-        return $this->send('GET', 'motor/vehicles', $this->getApiHeaders());
+        return $this->sendJson('GET', 'motor/vehicles', $this->getApiHeaders());
     }
 
     /**
@@ -25,7 +25,7 @@ class Vehicles extends Request
      */
     public function make($id): Response
     {
-        return $this->send('GET', "motor/vehicles/{$id}", $this->getApiHeaders());
+        return $this->sendJson('GET', "motor/vehicles/{$id}", $this->getApiHeaders());
     }
 
     /**
@@ -39,6 +39,6 @@ class Vehicles extends Request
      */
     public function show($make, $model, $year): Response
     {
-        return $this->send('GET', "motor/vehicles/{$make}/{$model}/{$year}", $this->getApiHeaders());
+        return $this->sendJson('GET', "motor/vehicles/{$make}/{$model}/{$year}", $this->getApiHeaders());
     }
 }

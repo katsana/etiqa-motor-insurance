@@ -15,6 +15,6 @@ class Quote extends Request
      */
     public function submit(array $payload): Response
     {
-        return $this->send('POST', 'motor/quote', $this->getApiHeaders(), $this->mergeApiBody($payload));
+        return $this->sendJson('POST', 'motor/quote', $this->getApiHeaders(), $this->mergeApiBody($payload));
     }
 }

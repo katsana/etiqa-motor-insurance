@@ -13,7 +13,7 @@ class Credential extends Request
      */
     public function createAccessToken(): Response
     {
-        return $this->send('POST', 'token', $this->getApiHeaders(), $this->getApiBody());
+        return $this->sendJson('POST', 'token', $this->getApiHeaders(), $this->getApiBody());
     }
 
     /**

@@ -2,10 +2,13 @@
 
 namespace Etiqa\MotorInsurance;
 
+use Laravie\Codex\Concerns\Request\Json;
 use Laravie\Codex\Request as BaseRequest;
 
 abstract class Request extends BaseRequest
 {
+    use Json;
+
     /**
      * Get API Header.
      *
@@ -13,9 +16,7 @@ abstract class Request extends BaseRequest
      */
     protected function getApiHeaders(): array
     {
-        $headers = [
-            'Content-Type' => 'application/json',
-        ];
+        $headers = [];
 
         if (! is_null($accessToken = $this->client->getAccessToken())) {
             $headers['Authorization'] = "Bearer {$accessToken}";
