@@ -15,14 +15,15 @@ class Response extends BaseResponse
     public function validate(): BaseResponse
     {
         $payload = $this->toArray();
+        $statusCode = $this->getStatusCode();
 
-        if ($this->getStatusCode() === 401) {
+        if ($statusCode === 401) {
             throw new Exceptions\NotAuthorizedException($this, $this->getReasonPhrase());
-        } elseif ($this->getStatusCode() === 500) {
+        } elseif ($statusCode === 500) {
             throw new HttpException($this, $this->toArray()['message']);
-        } elseif ($this->getStatusCode() !== 200) {
+        } elseif ($statusCode !== 200) {
             throw new HttpException($this, $this->getReasonPhrase());
-        } elseif ($payload['status'] == 'ERROR' && $this->getStatusCode() === 200) {
+        } elseif ($payload['status'] == 'ERROR' && $statusCode === 200) {
             throw new Exceptions\RequestHasFailedException($this, $payload['message'], $payload['code']);
         }
 
