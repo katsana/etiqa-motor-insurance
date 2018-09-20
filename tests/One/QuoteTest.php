@@ -87,4 +87,39 @@ class QuoteTest extends TestCase
 
         $client->uses('Quote')->submit($payload);
     }
+
+    /** @test */
+    public function it_can_create_quick_quotation_draft()
+    {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
+        ];
+
+        $payload = [
+            'coverage_type' => 'MT',
+            'id_type' => '1',
+            'id_value' => '820101015510',
+            'vehicle_postcode' => '50000',
+            'vehicle_reg_no' => 'ABC123',
+            'drivers' => [
+                ['email' => 'demo.etiqa@gmail.com'],
+            ],
+            'agent_code' => 'agent',
+            'operator_code' => 'operator',
+        ];
+
+        $faker = Faker::create()
+                    ->call('POST', $headers, json_encode(array_merge($payload, ['quick_quotation' => true])))
+                    ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
+                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
+
+        $client = new Client($faker->http(), 'homestead', 'secret');
+        $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
+
+        $response = $client->uses('Quote')->draft($payload);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame('OK', $response->toArray()['status']);
+    }
 }
