@@ -15,7 +15,7 @@ class Quote extends Request
      */
     public function draft(array $payload): Response
     {
-        $payload['quick_quotation'] = true;
+        $payload['quick_quote'] = true;
 
         return $this->submit($payload);
     }
