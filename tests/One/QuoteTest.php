@@ -110,7 +110,7 @@ class QuoteTest extends TestCase
         ];
 
         $faker = Faker::create()
-                    ->call('POST', $headers, json_encode(array_merge($payload, ['quick_quotation' => true])))
+                    ->call('POST', $headers, json_encode(array_merge($payload, ['quick_quote' => true])))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');
 
