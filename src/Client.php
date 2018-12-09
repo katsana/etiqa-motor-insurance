@@ -4,8 +4,6 @@ namespace Etiqa\MotorInsurance;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
 use Laravie\Codex\Client as BaseClient;
-use Laravie\Codex\Contracts\Response as ResponseContract;
-use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
@@ -112,18 +110,6 @@ class Client extends BaseClient
         $this->accessToken = $accessToken;
 
         return $this;
-    }
-
-    /**
-     * Resolve the responder class.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
-     * @return \Laravie\Codex\Contracts\Response
-     */
-    protected function responseWith(ResponseInterface $response): ResponseContract
-    {
-        return new Response($response);
     }
 
     /**
