@@ -32,7 +32,7 @@ abstract class Request extends BaseRequest
     {
         $headers = [];
 
-        if (! is_null($accessToken = $this->client->getAccessToken())) {
+        if (! \is_null($accessToken = $this->client->getAccessToken())) {
             $headers['Authorization'] = "Bearer {$accessToken}";
         }
 
