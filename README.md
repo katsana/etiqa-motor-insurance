@@ -18,7 +18,7 @@ To install through composer, simply put the following in your `composer.json` fi
 {
     "require": {
         "katsana/etiqa-motor-insurance": "^1.0",
-        "php-http/guzzle6-adapter": "^1.1.1 || ^2.0"
+        "php-http/guzzle6-adapter": "^2.0"
     }
 }
 ```
