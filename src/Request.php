@@ -4,10 +4,9 @@ namespace Etiqa\MotorInsurance;
 
 use Laravie\Codex\Concerns\Request\Json;
 use Laravie\Codex\Contracts\Response as ResponseContract;
-use Laravie\Codex\Request as BaseRequest;
 use Psr\Http\Message\ResponseInterface;
 
-abstract class Request extends BaseRequest
+abstract class Request extends \Laravie\Codex\Request
 {
     use Json;
 

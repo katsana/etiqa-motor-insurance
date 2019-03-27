@@ -28,13 +28,12 @@ class ResponseTest extends TestCase
         $this->assertInstanceOf(Response::class, $response);
     }
 
-    /**
-     * @test
-     * @expectedException \Etiqa\MotorInsurance\Exceptions\NotAuthorizedException
-     * @expectedExceptionMessage Not authorized.
-     */
+    /** @test */
     public function it_can_be_validate_unauthorized()
     {
+        $this->expectException('Etiqa\MotorInsurance\Exceptions\NotAuthorizedException');
+        $this->expectExceptionMessage('Not authorized.');
+
         $faker = Faker::create()
                     ->shouldResponseWith(401)
                     ->expectReasonPhraseIs('Not authorized.');
@@ -42,26 +41,24 @@ class ResponseTest extends TestCase
         (new Response($faker->message()))->validate();
     }
 
-    /**
-     * @test
-     * @expectedException \Laravie\Codex\Exceptions\HttpException
-     * @expectedExceptionMessage Server not available!
-     */
+    /** @test */
     public function it_can_be_validate_server_errors()
     {
+        $this->expectException('Laravie\Codex\Exceptions\HttpException');
+        $this->expectExceptionMessage('Server not available!');
+
         $faker = Faker::create()
                     ->shouldResponseWith(500, '{"status":"ERROR","message":"Server not available!"}');
 
         $response = (new Response($faker->message()))->validate();
     }
 
-    /**
-     * @test
-     * @expectedException \Laravie\Codex\Exceptions\HttpException
-     * @expectedExceptionMessage I'm a teapot
-     */
+    /** @test */
     public function it_can_be_validate_generic_errors()
     {
+        $this->expectException('Laravie\Codex\Exceptions\HttpException');
+        $this->expectExceptionMessage("I'm a teapot");
+
         $faker = Faker::create()
                     ->shouldResponseWith(418)
                     ->expectReasonPhraseIs("I'm a teapot");

@@ -3,9 +3,8 @@
 namespace Etiqa\MotorInsurance;
 
 use Laravie\Codex\Exceptions\HttpException;
-use Laravie\Codex\Response as BaseResponse;
 
-class Response extends BaseResponse
+class Response extends \Laravie\Codex\Response
 {
     /**
      * Validate the response object.

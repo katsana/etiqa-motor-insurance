@@ -3,9 +3,8 @@
 namespace Etiqa\MotorInsurance;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
-use Laravie\Codex\Client as BaseClient;
 
-class Client extends BaseClient
+class Client extends \Laravie\Codex\Client
 {
     /**
      * API Key.

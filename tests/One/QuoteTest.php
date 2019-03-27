@@ -52,13 +52,12 @@ class QuoteTest extends TestCase
         $this->assertSame('OK', $response->toArray()['status']);
     }
 
-    /**
-     * @test
-     * @expectedException \Etiqa\MotorInsurance\Exceptions\RequestHasFailedException
-     * @expectedExceptionMessage Driver record incomplete. Please provide details
-     */
+    /** @test */
     public function it_can_throws_exception_when_status_is_errors()
     {
+        $this->expectException('Etiqa\MotorInsurance\Exceptions\RequestHasFailedException');
+        $this->expectExceptionMessage('Driver record incomplete. Please provide details');
+
         $headers = [
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer AckfSECXIvnK5r28GVIWUAxmbBSjTsmF',
