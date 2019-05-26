@@ -5,3 +5,5 @@
 # PHPUnit
 /coverage/*
 /.phpunit.result.cache
+
+/*.php
