@@ -15,10 +15,11 @@ class Response extends \Laravie\Codex\Response
     {
         $payload = $this->toArray();
         $statusCode = $this->getStatusCode();
+        $contentType = $this->getHeader('Content-Type')[0] ?? null;
 
         if ($statusCode === 401) {
             throw new Exceptions\NotAuthorizedException($this, $this->getReasonPhrase());
-        } elseif ($statusCode === 500) {
+        } elseif ($statusCode === 500 && $contentType === 'application/json') {
             throw new HttpException($this, $this->toArray()['message']);
         } elseif ($statusCode !== 200) {
             throw new HttpException($this, $this->getReasonPhrase());
