@@ -43,6 +43,8 @@ class QuoteTest extends TestCase
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');
 
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
 
@@ -81,6 +83,8 @@ class QuoteTest extends TestCase
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');
 
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
 
@@ -112,6 +116,8 @@ class QuoteTest extends TestCase
                     ->call('POST', $headers, json_encode(array_merge($payload, ['quick_quote' => true])))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');
+
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');

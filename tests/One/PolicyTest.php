@@ -44,6 +44,8 @@ class PolicyTest extends TestCase
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/policy')
                     ->shouldResponseWith(200, '{"status":"OK","data":null}');
 
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
 

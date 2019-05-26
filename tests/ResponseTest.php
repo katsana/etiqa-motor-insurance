@@ -23,6 +23,8 @@ class ResponseTest extends TestCase
         $faker = Faker::create()
                     ->shouldResponseWith(200, '{"status":"OK"}');
 
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+
         $response = (new Response($faker->message()))->validate();
 
         $this->assertInstanceOf(Response::class, $response);
@@ -38,6 +40,8 @@ class ResponseTest extends TestCase
                     ->shouldResponseWith(401)
                     ->expectReasonPhraseIs('Not authorized.');
 
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+
         (new Response($faker->message()))->validate();
     }
 
@@ -49,6 +53,8 @@ class ResponseTest extends TestCase
 
         $faker = Faker::create()
                     ->shouldResponseWith(500, '{"status":"ERROR","message":"Server not available!"}');
+
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
 
         $response = (new Response($faker->message()))->validate();
     }
@@ -62,6 +68,8 @@ class ResponseTest extends TestCase
         $faker = Faker::create()
                     ->shouldResponseWith(418)
                     ->expectReasonPhraseIs("I'm a teapot");
+
+        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
 
         (new Response($faker->message()))->validate();
     }
