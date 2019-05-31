@@ -1,6 +1,6 @@
 <?php
 
-namespace Etiqa\MotorInsurance\TestCase\Exceptions;
+namespace Etiqa\MotorInsurance\Tests\Exceptions;
 
 use Etiqa\MotorInsurance\Exceptions\RequestHasFailedException;
 use Laravie\Codex\Contracts\Response;

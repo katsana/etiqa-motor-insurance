@@ -1,6 +1,6 @@
 <?php
 
-namespace Etiqa\MotorInsurance\TestCase;
+namespace Etiqa\MotorInsurance\Tests;
 
 use Etiqa\MotorInsurance\Response;
 use Laravie\Codex\Testing\Faker;

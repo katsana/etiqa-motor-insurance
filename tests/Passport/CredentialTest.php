@@ -1,6 +1,6 @@
 <?php
 
-namespace Etiqa\MotorInsurance\TestCase\Passport;
+namespace Etiqa\MotorInsurance\Tests\Passport;
 
 use Etiqa\MotorInsurance\Client;
 use Etiqa\MotorInsurance\Passport\Credential;

@@ -16,7 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Etiqa\\MotorInsurance\\TestCase\\": "tests/"
+            "Etiqa\\MotorInsurance\\Tests\\": "tests/"
         }
     },
     "require": {
