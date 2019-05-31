@@ -11,7 +11,7 @@ class Policy extends Request
      *
      * @param array $payload
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Etiqa\MotorInsurance\Response
      */
     public function submit(array $payload): Response
     {

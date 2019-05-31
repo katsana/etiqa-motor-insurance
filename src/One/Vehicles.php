@@ -9,7 +9,7 @@ class Vehicles extends Request
     /**
      * Get all whitelist vehicles.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Etiqa\MotorInsurance\Response
      */
     public function all(): Response
     {
@@ -21,7 +21,7 @@ class Vehicles extends Request
      *
      * @param int $id
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Etiqa\MotorInsurance\Response
      */
     public function make($id): Response
     {
@@ -35,7 +35,7 @@ class Vehicles extends Request
      * @param string $model
      * @param int    $year
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Etiqa\MotorInsurance\Response
      */
     public function show($make, $model, $year): Response
     {

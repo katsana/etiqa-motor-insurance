@@ -9,7 +9,7 @@ class Credential extends Request
     /**
      * Create access token.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Etiqa\MotorInsurance\Response
      */
     public function createAccessToken(): Response
     {
