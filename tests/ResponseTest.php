@@ -21,9 +21,7 @@ class ResponseTest extends TestCase
     public function it_can_be_validated()
     {
         $faker = Faker::create()
-                    ->shouldResponseWith(200, '{"status":"OK"}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK"}');
 
         $response = (new Response($faker->message()))->validate();
 
@@ -37,10 +35,8 @@ class ResponseTest extends TestCase
         $this->expectExceptionMessage('Not authorized.');
 
         $faker = Faker::create()
-                    ->shouldResponseWith(401)
+                    ->shouldResponseWithJson(401)
                     ->expectReasonPhraseIs('Not authorized.');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
 
         (new Response($faker->message()))->validate();
     }
@@ -52,9 +48,7 @@ class ResponseTest extends TestCase
         $this->expectExceptionMessage('Server not available!');
 
         $faker = Faker::create()
-                    ->shouldResponseWith(500, '{"status":"ERROR","message":"Server not available!"}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(500, '{"status":"ERROR","message":"Server not available!"}');
 
         $response = (new Response($faker->message()))->validate();
     }
@@ -66,10 +60,8 @@ class ResponseTest extends TestCase
         $this->expectExceptionMessage("I'm a teapot");
 
         $faker = Faker::create()
-                    ->shouldResponseWith(418)
+                    ->shouldResponseWithJson(418)
                     ->expectReasonPhraseIs("I'm a teapot");
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
 
         (new Response($faker->message()))->validate();
     }

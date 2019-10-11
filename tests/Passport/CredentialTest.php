@@ -35,9 +35,7 @@ class CredentialTest extends TestCase
         $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('https://api.etiqa.com.my/passport/api/v1.0/my/oauth/token')
-                    ->shouldResponseWith(200, '{"status":"OK","data":{"access_token":"AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"}}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":{"access_token":"AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"}}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->useCustomPassportEndpoint('https://api.etiqa.com.my/passport');

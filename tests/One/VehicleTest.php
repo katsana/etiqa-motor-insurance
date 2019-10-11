@@ -28,9 +28,7 @@ class VehicleTest extends TestCase
         $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles')
-                    ->shouldResponseWith(200, '{"status":"OK","data":[]}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":[]}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
@@ -53,9 +51,7 @@ class VehicleTest extends TestCase
         $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles/ABC')
-                    ->shouldResponseWith(200, '{"status":"OK","data":[]}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":[]}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
@@ -78,9 +74,7 @@ class VehicleTest extends TestCase
         $faker = Faker::create()
                     ->call('GET', $headers, m::any())
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/vehicles/ABC/123/2011')
-                    ->shouldResponseWith(200, '{"status":"OK","data":[]}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":[]}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');

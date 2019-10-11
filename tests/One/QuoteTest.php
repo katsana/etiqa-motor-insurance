@@ -41,9 +41,7 @@ class QuoteTest extends TestCase
         $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
-                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":null}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
@@ -81,9 +79,7 @@ class QuoteTest extends TestCase
         $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
-                    ->shouldResponseWith(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"code":"A038","message":"Driver record incomplete. Please provide details","status":"ERROR","data":null}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
@@ -115,9 +111,7 @@ class QuoteTest extends TestCase
         $faker = Faker::create()
                     ->call('POST', $headers, json_encode(array_merge($payload, ['quick_quote' => true])))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/quote')
-                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":null}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');

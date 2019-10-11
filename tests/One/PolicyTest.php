@@ -42,9 +42,7 @@ class PolicyTest extends TestCase
         $faker = Faker::create()
                     ->call('POST', $headers, json_encode($payload))
                     ->expectEndpointIs('/api/v1.0/my/insurance/motor/policy')
-                    ->shouldResponseWith(200, '{"status":"OK","data":null}');
-
-        $faker->message()->shouldReceive('getHeader')->once()->andReturn(['application/json']);
+                    ->shouldResponseWithJson(200, '{"status":"OK","data":null}');
 
         $client = new Client($faker->http(), 'homestead', 'secret');
         $client->setAccessToken('AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
